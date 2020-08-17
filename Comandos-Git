@@ -1,0 +1,108 @@
+COMANDOS GIT
+
+GIT É UM BANCO DE DADOS DE GRAFOS
+
+O CORRETO É DEIXAR REPOSITÓRIO LIMPO, CÓDIGO LIMPO. ISSO FAZ PARTE DE SER UM PROFISSIONAL
+
+1° Coisa abrir Github e clonar repositorio(copiar link) 
+2 git clone URL - clonar repositorio
+3 ls - listar
+4 code . -r
+5 fazer alteração no codigo
+6 git status - ve se esta no master
+7 gitt branch nomeDoBranch/corecao
+8 git checkout nomeDOBranchQueCriou
+9 git add arquivoQueAlterou - envia para stage
+10 - git commit - m"" - commitar
+11 testar a aplicação
+12 git push origin nomeDoBranch
+13 criar pull request no github (requisição para pull): escolher do branch que criou(em baixo tem o commit) e pode colocar uma mensagem
+14 alguém revisa o código
+
+mkdir - criar pasta
+cd - entrar pasta 
+"cd -"  volta um nivel no diretorio
+git init - cria ou reinicializa um repositorio
+touch - cria arquivos
+git s- 
+git add .\nome.extensao- adiciona os arquivos no repositório.
+git status - mostra arquivos que estão no stage
+git commit - m"" - commita as alterações
+git log - mostra as alterações
+git remote add origin URL - adiciona o repositório remoto
+git push -u origin master - envia os arquivos para o repositório remoto na primeira vez
+git push - envia para o repositorio
+git commit - m"" --amend - corrige um commit escrito errado
+
+git reset --soft HEAD~2 - remove os commits ligados a lista mas não joga fora alterações do commit. 2 é a quantidade dos commits(soft pode ser hard, só que esse apaga as alterações dos commits também)
+
+git rebase -i HEAD ~3 - abre uma tela com últimos commits:
+geralmente mantém o primeiro como pick e outros como squash(mescla tudo junto)
+Após salvar vai abrir uma tela dizendo qual mensagem gostaria de deixar
+
+git add . - não pode ser usado para adicionar arquivos de coisas diferentes e ser commitados juntos, está errado. commits devem ter apenas uma coisa de cada vez.
+O correto é fazer git add "nomeDoArquivo.extensão".
+se foi edicionado alguma coisa por engano deve se usar 
+git reset -- "nomeDoArquivo.extensao" - assim ele sai do stage
+
+git add - i - opção interativa : usar opção 3(revert) e vai usar todos os arquivos que estão no stage e selecionar o número dos arquivo que você não quer commitar agora . Enter para voltar no menu anterior.
+
+caso você tirou um que não devia usa opção 4 (ad untracked) e digita o número do arquivo que quer colocar no stage. clicar enter e quit para sair
+
+ser você der um git reset --HARD e perdeu um aruivo que não podia, você só precisa do shaum do último commit.(mostra no git log anterior)
+
+"quando damos o reset só mudamos a etiqueta ou referencia do branch master dois commits pra trás. os commits não foram apagados, foram apenas marcado para serem apagados.
+
+git checkout -b teste "shaum" - cria um novo branch e tira o commit da lixeira. (teste é o nome da etiqueta)
+
+git checkcout master - volta para master 
+git rebase teste - faz apontar o branch teste criado para o branch master
+
+git branch - d teste - apaga o branch temporário(teste)
+
+
+TEC LEAD TEM QUE REJEITAR PULL REQUEST RUINS, BAGAUNÇADO SEM TEXT, BAGUNÇADO, COISAS MISTURADOS
+
+
+clonar subversion para git
+
+sudo apt install git-snv  
+git snv clone ENDERECO web
+
+git snv rebase - puxa os ultimos commits do subversion
+
+git snv dcommit - para devolver para o servidor(vai enviar os commits locais para subversion)
+// você vai poder fazer branchs locais, trabalhar aos poucos fazer pequenos commits e no final fazer squash dos branchs e criar commits limpos para enviar para o servidor subversion//
+
+Git não faz de forma eficiente cópias de arquivos binários (photoshop). Ele não faz delta de binário, ele grava o arquivo inteiro para cada modificação.
+Nesse caso para gravar os binários de forma correta 
+1 instalar no ubunto - sudo apr install git-lfs
+2 - git lfs install
+3git lfs tracck "*.psd" (git vai poder ler essa extençao)
+4 - cp ~dowwnload/algumaCoisa.psd (entra no caminho)
+5- ls (lista)
+6 -git add 1203.psd (adiciona psd)
+7 - git status (mostra arquivos no stage)
+-git add .gitattributes
+8 - git status
+9 - cat .gitattributes 
+10  git commit -m"adding photoshop design"
+
+// No commit não vai anexado o arquivo inteiro, não poem no diretório .git/objects mas sim no .git/lfs, e no cocmmit em sim não vai o binário inteiro, mas sim o caminho onde está o arquivo(symlink, ou link simbólico) o commit fica leve e quando fizer um git clcone vai vir só a ultima versao. 
+
+
+
+Um repositório de versionamento, o binário está anexado em um commit, e o binário é usado para gerar o shaumn  que identifica o commit. Se tirar o binário vai mudar o chaum. O git é uma dag ou grafo onde os commits são apontados para o anterior, armazenando o chaum  do anterior. Se um mudar todos os depois dele mudam também.
+
+JAMAIS COMMITE COISAS COMO SENHA NO REPOSITORIO.
+
+
+MONOREPOS - Se o google usa eu devoi usar também. NÃAAO.
+nada que o google usa deve se aplicar a você kkk
+
+A Kernel do linux é um monorepos monotree. 
+
+ 	
+
+
+git gc (garbage collctor) - equivalente a esvaziar a lixeira do windows
